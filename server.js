@@ -11,6 +11,23 @@ function callback(result)
 	alert(result[0].ip);
 }
 
+app.get('/', function(req, res)
+{	
+	var fileName = path.join(__dirname, 'index.html');
+	res.sendFile(fileName, function(err)
+	{
+		if(err)
+		{
+			console.log(err);
+			res.status(err.status).end();
+		}
+		else
+		{
+			console.log('Sent');
+		}
+	});
+});
+
 
 app.get('/api/whoami', function(req, res)
 {
